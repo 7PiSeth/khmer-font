@@ -2,11 +2,28 @@ import { useState } from 'react';
 import { Download, CheckCircle, Archive, Minimize2 } from 'lucide-react';
 
 const FONT_DATA = [
-  { id: 'khmer-os', name: 'Khmer OS', fileName: 'KhmerOS.ttf', size: '2 KB', category: 'Standard', googleFont: 'Hanuman', description: 'Standard Unicode font for general documentation.', previewText: 'ព្រះរាជាណាចក្រកម្ពុជា' },
-  { id: 'moul', name: 'Khmer Moul', fileName: 'KhmerOS_Moul.ttf', size: '42 KB', category: 'Headers', googleFont: 'Moul', description: 'Traditional heavy-weight font for titles.', previewText: 'ជយោ! ជាតិ សាសនា' },
-  { id: 'battambang', name: 'Khmer Battambang', fileName: 'KhmerOS_Battambang.ttf', size: '85 KB', category: 'Labels', googleFont: 'Battambang', description: 'Modern and clear font for digital screens.', previewText: 'ចំណេះដឹងគឺជាទ្រព្យសម្បត្តិ' },
-  { id: 'siemreap', name: 'Khmer Siemreap', fileName: 'KhmerOS_Siemreap.ttf', size: '72 KB', category: 'Body', googleFont: 'Siemreap', description: 'Optimized for high-density reading surfaces.', previewText: 'សិល្បៈនៃការរស់នៅ' },
-  { id: 'hanuman', name: 'Khmer Hanuman', fileName: 'KhmerOS_Hanuman.ttf', size: '120 KB', category: 'Body Text', googleFont: 'Hanuman', description: 'Elegant serif style for literature.', previewText: 'ភាសាខ្មែរ គឺជាភាសាផ្លូវការ' },
+  { id: 'angkor', name: 'Angkor', designer: 'Danh Hong', folder: 'Angkor', fileName: 'Angkor-Regular.ttf', category: 'Display', googleFont: 'Angkor', description: 'Inspired by Khmer inscriptions, perfect for historical contexts.', previewText: 'អង្គរវត្តជាសម្បត្តិបេតិកភណ្ឌពិភពលោក' },
+  { id: 'battambang', name: 'Battambang', designer: 'Danh Hong', folder: 'Battambang', fileName: 'Battambang-Regular.ttf', category: 'Body', googleFont: 'Battambang', description: 'A highly legible font optimized for digital screens.', previewText: 'ចំណេះដឹងគឺជាទ្រព្យសម្បត្តិដ៏មានតម្លៃ' },
+  { id: 'bayon', name: 'Bayon', designer: 'Danh Hong', folder: 'Bayon', fileName: 'Bayon-Regular.ttf', category: 'Display', googleFont: 'Bayon', description: 'Bold and decorative, suitable for posters and titles.', previewText: 'ប្រាសាទបាយ័នមានមុខបួន' },
+  { id: 'bokor', name: 'Bokor', designer: 'Danh Hong', folder: 'Bokor', fileName: 'Bokor-Regular.ttf', category: 'Display', googleFont: 'Bokor', description: 'Unique style reminiscent of vintage Khmer signage.', previewText: 'ភ្នំបូកគោមានខ្យល់អាកាសបរិសុទ្ធ' },
+  { id: 'chenla', name: 'Chenla', designer: 'Danh Hong', folder: 'Chenla', fileName: 'Chenla-Regular.ttf', category: 'Classic', googleFont: 'Chenla', description: 'Traditional serif style often used in formal documents.', previewText: 'សករាជថ្មីនៃបច្ចេកវិទ្យា' },
+  { id: 'content', name: 'Content', designer: 'Danh Hong', folder: 'Content', fileName: 'Content-Regular.ttf', category: 'Standard', googleFont: 'Content', description: 'Clear and widely used for general content typing.', previewText: 'អានច្រើនដឹងច្រើន' },
+  { id: 'dangrek', name: 'Dangrek', designer: 'Danh Hong', folder: 'Dangrek', fileName: 'Dangrek-Regular.ttf', category: 'Display', googleFont: 'Dangrek', description: 'Tall and modern font for contemporary designs.', previewText: 'ជួរភ្នំដងរែកការពារព្រំដែន' },
+  { id: 'fasthand', name: 'Fasthand', designer: 'Danh Hong', folder: 'Fasthand', fileName: 'Fasthand-Regular.ttf', category: 'Handwriting', googleFont: 'Fasthand', description: 'Mimics natural quick handwriting style.', previewText: 'សរសេរលឿនរហ័សទាន់ចិត្ត' },
+  { id: 'freehand', name: 'Freehand', designer: 'Danh Hong', folder: 'Freehand', fileName: 'Freehand-Regular.ttf', category: 'Handwriting', googleFont: 'Freehand', description: 'Elegant brush-stroke style for creative work.', previewText: 'សិល្បៈនៃការសរសេរដោយសេរី' },
+  { id: 'hanuman', name: 'Hanuman', designer: 'Danh Hong', folder: 'Hanuman/static', fileName: 'Hanuman-Regular.ttf', category: 'Body', googleFont: 'Hanuman', description: 'Elegant serif style suitable for literature.', previewText: 'ភាសាខ្មែរ គឺជាភាសាផ្លូវការ' },
+  { id: 'khmer', name: 'Khmer', designer: 'Danh Hong', folder: 'Khmer', fileName: 'Khmer-Regular.ttf', category: 'Classic', googleFont: 'Khmer', description: 'Standard traditional Khmer unicode font.', previewText: 'ជាតិ សាសនា ព្រះមហាក្សត្រ' },
+  { id: 'koh-santepheap', name: 'Koh Santepheap', designer: 'Danh Hong', folder: 'Koh_Santepheap', fileName: 'KohSantepheap-Regular.ttf', category: 'Modern', googleFont: 'Koh Santepheap', description: 'Optimized for newspaper and long-form reading.', previewText: 'សន្តិភាពគឺជាមូលដ្ឋានគ្រឹះ' },
+  { id: 'koulen', name: 'Koulen', designer: 'Danh Hong', folder: 'Koulen', fileName: 'Koulen-Regular.ttf', category: 'Display', googleFont: 'Koulen', description: 'Heavy and impactful font for headlines.', previewText: 'ជយោ! ព្រះរាជាណាចក្រកម្ពុជា' },
+  { id: 'metal', name: 'Metal', designer: 'Danh Hong', folder: 'Metal', fileName: 'Metal-Regular.ttf', category: 'Display', googleFont: 'Metal', description: 'Sharp, distinctive characters for unique branding.', previewText: 'រឹងមាំដូចដែកថែប' },
+  { id: 'moul', name: 'Moul', designer: 'Danh Hong', folder: 'Moul', fileName: 'Moul-Regular.ttf', category: 'Header', googleFont: 'Moul', description: 'Heavy traditional font used for titles.', previewText: 'ជយោ! ជាតិ សាសនា' },
+  { id: 'moulpali', name: 'Moulpali', designer: 'Danh Hong', folder: 'Moulpali', fileName: 'Moulpali-Regular.ttf', category: 'Header', googleFont: 'Moulpali', description: 'Traditional heavy-weight decorative font.', previewText: 'សេរីភាព និងសមភាព' },
+  { id: 'nokora', name: 'Nokora', designer: 'Danh Hong', folder: 'Nokora/static', fileName: 'Nokora-Regular.ttf', category: 'Modern', googleFont: 'Nokora', description: 'Clean sans-serif style for digital interfaces.', previewText: 'យុគសម័យឌីជីថល' },
+  { id: 'odor-mean-chey', name: 'Odor Mean Chey', designer: 'Danh Hong', folder: 'Odor_Mean_Chey', fileName: 'OdorMeanChey-Regular.ttf', category: 'Display', googleFont: 'Odor Mean Chey', description: 'Strong, rhythmic character strokes.', previewText: 'ខេត្តឧត្តរមានជ័យ' },
+  { id: 'preahvihear', name: 'Preahvihear', designer: 'Danh Hong', folder: 'Preahvihear', fileName: 'Preahvihear-Regular.ttf', category: 'Display', googleFont: 'Preahvihear', description: 'Grand and steady character design.', previewText: 'ប្រាសាទព្រះវិហារ' },
+  { id: 'siemreap', name: 'Siemreap', designer: 'Danh Hong', folder: 'Siemreap', fileName: 'Siemreap-Regular.ttf', category: 'Body', googleFont: 'Siemreap', description: 'Clean design often used in mobile interfaces.', previewText: 'សិល្បៈនៃការរស់នៅ' },
+  { id: 'suwannaphum', name: 'Suwannaphum', designer: 'Danh Hong', folder: 'Suwannaphum', fileName: 'Suwannaphum-Regular.ttf', category: 'Label', googleFont: 'Suwannaphum', description: 'Compact and clear for labels and small text.', previewText: 'សុវណ្ណភូមិ ទឹកដីមាស' },
+  { id: 'taprom', name: 'Taprom', designer: 'Danh Hong', folder: 'Taprom', fileName: 'Taprom-Regular.ttf', category: 'Display', googleFont: 'Taprom', description: 'Ornate and decorative traditional style.', previewText: 'ប្រាសាទតាព្រហ្ម' },
 ];
 
 const FontCard = ({ font, downloadingId, onDownload }) => {
@@ -99,9 +116,14 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
                   {font.size}
                 </span>
               </div>
-              <h3 className="text-xl font-bold mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
+              <h3 className="text-xl font-bold mb-1" style={{ fontFamily: "'Lato', sans-serif" }}>
                 {font.name}
               </h3>
+              {font.designer && (
+                <p className="text-xs text-slate-400 dark:text-slate-500 mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
+                  Designed by {font.designer}
+                </p>
+              )}
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6" style={{ fontFamily: "'Lato', sans-serif" }}>
                 {font.description}
               </p>
@@ -174,7 +196,7 @@ const Body = ({ searchTerm }) => {
 
   const handleDownload = (font) => {
     setDownloadingId(font.id);
-    triggerDownload(`./src/assets/${font.fileName}`, font.fileName);
+    triggerDownload(`./src/assets/${font.folder}/${font.fileName}`, font.fileName);
     setTimeout(() => setDownloadingId(null), 1500);
   };
 
