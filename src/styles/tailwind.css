@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Angkor&family=Battambang&family=Bayon&family=Bokor&family=Chenla&family=Content&family=Dangrek&family=Fasthand&family=Freehand&family=Great+Vibes&family=Hanuman&family=Khmer&family=Koh+Santepheap&family=Koulen&family=Metal&family=Moul&family=Moulpali&family=Nokora&family=Odor+Mean+Chey&family=Poppins&family=Preahvihear&family=Raleway:wght@300;500&family=Siemreap&family=Suwannaphum&family=Taprom&family=Roboto&family=Open+Sans&family=Lato&family=Montserrat&family=Oswald&family=Merriweather&family=Nunito&family=Playfair+Display&family=Source+Sans+Pro&family=Inter&family=PT+Sans&family=Ubuntu&family=Droid+Sans&family=Work+Sans&family=Cabin&family=Quicksand&family=Zilla+Slab&family=Arvo&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles can be added below */
+@layer base {
+    html {
+      font-family: "suwannaphum", sans-serif;
+      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
+      overflow: hidden;
+    }
+
+    body {
+      @apply light-mode dark:dark-mode select-none;
+    }
+  }
+  
+  @layer components {
+    .dark-mode {
+      @apply bg-[rgb(13,17,23)] text-slate-300;
+    }
+    .light-mode {
+      @apply bg-[rgb(255,255,255)] text-black;
+    }
+    .t-g {
+      @apply inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#4ca5ff] to-[#b673f8];
+    }
+    .t-g2 {
+      @apply inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#0f2027] to-[#2c5364];
+    }
+    .bg-primary {
+      @apply bg-gradient-to-r from-cyan-500 to-blue-500;
+    }
+    /* button {
+      @apply active:scale-150 duration-100 
+      font-battambang text-xl px-5 py-2 
+      rounded-xl bg-primary text-white;
+    } */
+    .selection {
+      @apply text-xl font-medium sm:mx-5 text-center mx-1
+      dark:bg-[#1E2329] bg-[#F4F6F8];
+    }
+  }
+
+  /* In your global CSS file (e.g., App.css) */
+
+@supports (-webkit-touch-callout: none) {
+  .custom-height {
+    height: -webkit-fill-available; /* Safari-specific fill available height */
+  }
+}
