@@ -33,7 +33,7 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
       {/* Fullscreen Overlay */}
       {isExpanded && (
         <div className="fixed inset-0 z-50 bg-white dark:bg-slate-950 flex flex-col">
-          
+
           {/* Overlay Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-3">
@@ -105,11 +105,10 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
             <button
               onClick={() => onDownload(font)}
               disabled={downloadingId === font.id}
-              className={`w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl sm:rounded-2xl font-bold transition-all ${
-                downloadingId === font.id
+              className={`w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl sm:rounded-2xl font-bold transition-all ${downloadingId === font.id
                   ? 'bg-emerald-500 text-white'
                   : 'bg-slate-900 dark:bg-slate-800 text-white hover:bg-blue-600 active:scale-[0.97]'
-              }`}
+                }`}
               style={{ fontFamily: "'Lato', sans-serif" }}
             >
               {downloadingId === font.id ? <CheckCircle size={18} /> : <Download size={18} />}
@@ -118,19 +117,28 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
           </div>
 
           {/* Right Panel - Preview */}
-          <div className="flex-1 p-5 sm:p-10 flex flex-col justify-center min-h-[140px] sm:min-h-[200px]">
+          <div className="flex-1 p-5 sm:p-8 flex flex-col justify-center min-h-[140px] sm:min-h-[180px]">
             <div
               onClick={handleTextClick}
-              className="text-3xl sm:text-5xl md:text-6xl text-slate-800 dark:text-slate-100 leading-tight text-center lg:text-left cursor-text hover:opacity-70 transition-opacity select-none"
-              style={{ fontFamily: `'${font.googleFont}', sans-serif` }}
-              title="Click to edit"
+              className="text-xl sm:text-2xl md:text-3xl text-slate-800 dark:text-slate-100 leading-loose text-center lg:text-left cursor-text hover:opacity-70 transition-opacity select-none tracking-widest"
+              style={{
+                fontFamily: `'${font.googleFont}', sans-serif`,
+                letterSpacing: '0.08em',
+                lineHeight: '2.2',
+                wordSpacing: '0.3em',
+              }}
             >
               {previewText || font.previewText}
             </div>
 
-            <div className="mt-6 pt-4 border-t border-slate-50 dark:border-slate-800/50 flex items-center justify-between text-[10px] sm:text-xs text-slate-400 font-medium">
-              <span className="uppercase tracking-widest">ក ខ គ ឃ ង ច ឆ ជ ឈ ញ</span>
-              <span className="hidden sm:inline text-slate-300 dark:text-slate-600 italic">
+            <div className="mt-4 pt-4 border-t border-slate-50 dark:border-slate-800/50 flex items-center justify-between text-[10px] sm:text-xs text-slate-400 font-medium">
+              <span
+                className="uppercase tracking-[0.25em]"
+                style={{ letterSpacing: '0.25em' }}
+              >
+                ក ខ គ ឃ ង ច ឆ ជ ឈ ញ
+              </span>
+              <span className="hidden sm:inline text-slate-300 dark:text-slate-600 italic tracking-wide">
                 tap to edit
               </span>
             </div>
