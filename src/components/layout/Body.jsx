@@ -62,8 +62,13 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
               autoFocus
               value={previewText}
               onChange={(e) => setPreviewText(e.target.value)}
-              className="flex-1 w-full bg-transparent outline-none resize-none text-slate-800 dark:text-slate-100 leading-relaxed placeholder-slate-300 dark:placeholder-slate-600 text-4xl sm:text-6xl md:text-7xl"
-              style={{ fontFamily: `'${font.googleFont}', sans-serif` }}
+              className="flex-1 w-full bg-transparent outline-none resize-none text-slate-800 dark:text-slate-100 placeholder-slate-300 dark:placeholder-slate-600 text-2xl sm:text-3xl md:text-4xl"
+              style={{
+                fontFamily: `'${font.googleFont}', sans-serif`,
+                letterSpacing: '0.08em',
+                lineHeight: '2.2',
+                wordSpacing: '0.3em',
+              }}
               placeholder="វាយអក្សរនៅទីនេះ..."
             />
           </div>
@@ -106,8 +111,8 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
               onClick={() => onDownload(font)}
               disabled={downloadingId === font.id}
               className={`w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl sm:rounded-2xl font-bold transition-all ${downloadingId === font.id
-                  ? 'bg-emerald-500 text-white'
-                  : 'bg-slate-900 dark:bg-slate-800 text-white hover:bg-blue-600 active:scale-[0.97]'
+                ? 'bg-emerald-500 text-white'
+                : 'bg-slate-900 dark:bg-slate-800 text-white hover:bg-blue-600 active:scale-[0.97]'
                 }`}
               style={{ fontFamily: "'Lato', sans-serif" }}
             >
