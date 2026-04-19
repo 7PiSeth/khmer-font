@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Search, Type, Monitor, Smartphone, Tablet, Sun, Moon } from 'lucide-react';
 
 const Header = ({ searchTerm, setSearchTerm }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -25,9 +25,11 @@ const Header = ({ searchTerm, setSearchTerm }) => {
 
         {/* Logo Section */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <div className="bg-blue-600 p-1.5 sm:p-2 rounded-lg text-white shadow-lg shadow-blue-500/20">
-            <Type size={20} className="sm:w-6 sm:h-6" />
-          </div>
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="8" className="fill-blue-600" />
+            <text x="18" y="24" textAnchor="middle" fontSize="20" fontWeight="700"
+              fontFamily="'Battambang', 'Khmer', serif" fill="white">ពុម្ភ</text>
+          </svg>
           <h1 className="text-xl sm:text-2xl font-bold whitespace-nowrap" style={{ fontFamily: "'Playfair Display', serif" }}>
             Khmer<span className="text-blue-600">Fonts</span>
           </h1>
