@@ -10,7 +10,7 @@
       font-family: "suwannaphum", sans-serif;
       scroll-behavior: smooth;
       -webkit-tap-highlight-color: transparent;
-      overflow: hidden;
+      /* overflow: hidden; */
     }
 
     body {
