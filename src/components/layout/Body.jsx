@@ -227,7 +227,7 @@ const Body = ({ searchTerm }) => {
           style={{ fontFamily: "'Lato', sans-serif" }}
         >
           <Archive size={18} />
-          Download All Fonts
+          Download All 27 Fonts
         </button>
       </div>
 
