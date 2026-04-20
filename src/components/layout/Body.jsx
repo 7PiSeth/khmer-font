@@ -196,12 +196,12 @@ const Body = ({ searchTerm }) => {
 
   const handleDownload = (font) => {
     setDownloadingId(font.id);
-    triggerDownload(`./public/fonts/${font.folder}/${font.fileName}`, font.fileName);
+    triggerDownload(`./fonts/${font.folder}/${font.fileName}`, font.fileName);
     setTimeout(() => setDownloadingId(null), 1500);
   };
 
   const handleDownloadAll = () => {
-    triggerDownload('./public/fonts/khmer-fonts-collection.zip', 'khmer-fonts-collection.zip');
+    triggerDownload('./fonts/khmer-fonts-collection.zip', 'khmer-fonts-collection.zip');
   };
 
   return (
