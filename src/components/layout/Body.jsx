@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Download, CheckCircle, Archive, Minimize2 } from 'lucide-react';
+import { Download, CheckCircle, Archive, Minimize2, PenLine } from 'lucide-react';
+import { Editor } from '@tinymce/tinymce-react';
 
 const FONT_DATA = [
   { id: 'angkor', name: 'Angkor', designer: 'Danh Hong', fileName: 'Angkor.zip', category: 'Display', googleFont: 'Angkor', description: 'Inspired by Khmer inscriptions, perfect for historical contexts.', previewText: 'អង្គរវត្តជាសម្បត្តិបេតិកភណ្ឌពិភពលោក' },
@@ -46,23 +47,14 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
     setIsEditing(false);
   };
 
-  const handleBlur = () => {
-    if (!isExpanded) setIsEditing(false);
-  };
-
   return (
     <>
-      {/* Fullscreen Overlay */}
+      {/* Fullscreen Preview Overlay */}
       {isExpanded && (
         <div className="fixed inset-0 z-50 bg-white dark:bg-slate-950 flex flex-col">
-
-          {/* Overlay Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-3">
-              <span
-                className="text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded"
-                style={{ fontFamily: "'Battambang', sans-serif" }}
-              >
+              <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded">
                 {font.category}
               </span>
               <h3 className="text-lg font-bold" style={{ fontFamily: "'Lato', sans-serif" }}>
@@ -71,20 +63,19 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
             </div>
             <button
               onClick={handleMinimize}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-blue-900/30 dark:hover:text-blue-400 transition-all text-xs font-bold active:scale-95"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-blue-50 hover:text-blue-600 transition-all text-xs font-bold active:scale-95"
             >
               <Minimize2 size={14} />
               Minimize
             </button>
           </div>
 
-          {/* Overlay Editable Area */}
           <div className="flex-1 flex flex-col p-6 sm:p-12 overflow-auto">
             <textarea
               autoFocus
               value={previewText}
               onChange={(e) => setPreviewText(e.target.value)}
-              className="flex-1 w-full bg-transparent outline-none resize-none text-slate-800 dark:text-slate-100 placeholder-slate-300 dark:placeholder-slate-600 text-2xl sm:text-3xl md:text-4xl"
+              className="flex-1 w-full bg-transparent outline-none resize-none text-slate-800 dark:text-slate-100 text-2xl sm:text-3xl md:text-4xl"
               style={{
                 fontFamily: `'${font.googleFont}', sans-serif`,
                 letterSpacing: '0.08em',
@@ -94,42 +85,23 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
               placeholder="វាយអក្សរនៅទីនេះ..."
             />
           </div>
-
-          {/* Overlay Footer */}
-          <div className="px-6 py-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
-            <span className="uppercase tracking-widest">ក ខ គ ឃ ង ច ឆ ជ ឈ ញ</span>
-            <span>Khmer Unicode 13.0</span>
-          </div>
         </div>
       )}
 
-      {/* Normal Card */}
+      {/* Normal Card UI */}
       <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-xl">
         <div className="flex flex-col lg:flex-row">
-
-          {/* Left Panel */}
           <div className="lg:w-80 p-5 sm:p-6 bg-slate-50/50 dark:bg-slate-800/30 border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-slate-800 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <span
-                  className="text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded"
-                  style={{ fontFamily: "'Battambang', sans-serif" }}
-                >
+                <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded">
                   {font.category}
-                </span>
-                <span className="text-xs font-bold text-slate-400 dark:text-slate-500">
-                  {font.size}
                 </span>
               </div>
               <h3 className="text-xl font-bold mb-1" style={{ fontFamily: "'Lato', sans-serif" }}>
                 {font.name}
               </h3>
-              {font.designer && (
-                <p className="text-xs text-slate-400 dark:text-slate-500 mb-2" style={{ fontFamily: "'Lato', sans-serif" }}>
-                  Designed by {font.designer}
-                </p>
-              )}
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6" style={{ fontFamily: "'Lato', sans-serif" }}>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
                 {font.description}
               </p>
             </div>
@@ -137,45 +109,33 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
             <button
               onClick={() => onDownload(font)}
               disabled={downloadingId === font.id}
-              className={`w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl sm:rounded-2xl font-bold transition-all ${downloadingId === font.id
-                ? 'bg-emerald-500 text-white'
-                : 'bg-slate-900 dark:bg-slate-800 text-white hover:bg-blue-600 active:scale-[0.97]'
-                }`}
-              style={{ fontFamily: "'Lato', sans-serif" }}
+              className={`w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl font-bold transition-all ${
+                downloadingId === font.id
+                  ? 'bg-emerald-500 text-white'
+                  : 'bg-slate-900 dark:bg-slate-800 text-white hover:bg-blue-600 active:scale-[0.97]'
+              }`}
             >
               {downloadingId === font.id ? <CheckCircle size={18} /> : <Download size={18} />}
               {downloadingId === font.id ? 'Starting...' : 'Download'}
             </button>
           </div>
 
-          {/* Right Panel - Preview */}
-          <div className="flex-1 p-5 sm:p-8 flex flex-col justify-center min-h-[140px] sm:min-h-[180px]">
+          <div className="flex-1 p-5 sm:p-8 flex flex-col justify-center min-h-[140px]">
             <div
               onClick={handleTextClick}
-              className="text-xl sm:text-2xl md:text-3xl text-slate-800 dark:text-slate-100 leading-loose text-center lg:text-left cursor-text hover:opacity-70 transition-opacity select-none tracking-widest"
+              className="text-xl sm:text-2xl md:text-3xl text-slate-800 dark:text-slate-100 text-center lg:text-left cursor-text hover:opacity-70 transition-opacity"
               style={{
                 fontFamily: `'${font.googleFont}', sans-serif`,
-                letterSpacing: '0.08em',
                 lineHeight: '2.2',
-                wordSpacing: '0.3em',
               }}
             >
               {previewText || font.previewText}
             </div>
-
-            <div className="mt-4 pt-4 border-t border-slate-50 dark:border-slate-800/50 flex items-center justify-between text-[10px] sm:text-xs text-slate-400 font-medium">
-              <span
-                className="uppercase tracking-[0.25em]"
-                style={{ letterSpacing: '0.25em' }}
-              >
-                ក ខ គ ឃ ង ច ឆ ជ ឈ ញ
-              </span>
-              <span className="hidden sm:inline text-slate-300 dark:text-slate-600 italic tracking-wide">
-                tap to edit
-              </span>
+            <div className="mt-4 pt-4 border-t border-slate-50 dark:border-slate-800/50 flex items-center justify-between text-[10px] text-slate-400">
+              <span className="uppercase tracking-[0.25em]">ក ខ គ ឃ ង ច ឆ ជ ឈ ញ</span>
+              <span className="italic">tap to edit</span>
             </div>
           </div>
-
         </div>
       </div>
     </>
@@ -184,6 +144,11 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
 
 const Body = ({ searchTerm }) => {
   const [downloadingId, setDownloadingId] = useState(null);
+  const [showEditor, setShowEditor] = useState(false);
+
+  // TinyMCE Font Formatting: Name='Google Font Name', sans-serif;
+  const khmerFontFormats = FONT_DATA.map(f => `${f.name}='${f.googleFont}', sans-serif`).join(';');
+  const googleFontsUrl = FONT_DATA.map(f => f.googleFont.replace(/ /g, '+')).join('|');
 
   const filteredFonts = FONT_DATA.filter(f =>
     f.name.toLowerCase().includes(searchTerm?.toLowerCase() ?? '') ||
@@ -211,26 +176,80 @@ const Body = ({ searchTerm }) => {
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-12">
-      <div className="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="text-center sm:text-left">
-          <h2 className="text-2xl sm:text-4xl font-bold mb-1 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
-            Khmer Unicode Archive
-          </h2>
-          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400" style={{ fontFamily: "'Lato', sans-serif" }}>
-            Free high-quality fonts for your creative projects.
-          </p>
+      {/* TinyMCE Modal Overlay */}
+      {showEditor && (
+        <div className="fixed inset-0 z-[60] bg-white dark:bg-slate-950 flex flex-col">
+          <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-2">
+              <PenLine size={16} className="text-blue-600" />
+              <span className="font-bold text-sm" style={{ fontFamily: "'Lato', sans-serif" }}>
+                Khmer Rich Text Editor
+              </span>
+            </div>
+            <button
+              onClick={() => setShowEditor(false)}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-blue-50 hover:text-blue-600 transition-all text-xs font-bold active:scale-95"
+            >
+              <Minimize2 size={14} />
+              Close Editor
+            </button>
+          </div>
+          <div className="flex-1 overflow-hidden">
+            <Editor
+              apiKey="8hbojyhxg3e1thxrfp3xzks2rdz1autw90biep7q3l8laf1q"
+              init={{
+                height: '100%',
+                menubar: true,
+                plugins: ['advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen', 'insertdatetime', 'media', 'table', 'wordcount'],
+                toolbar: 'undo redo | fontfamily fontsize | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor | removeformat',
+                font_family_formats: khmerFontFormats,
+                content_style: `
+                  @import url('https://fonts.googleapis.com/css2?family=${googleFontsUrl}&display=swap');
+                  body { font-family: 'Battambang', sans-serif; font-size: 18px; line-height: 2; padding: 2rem; }
+                `,
+                skin: document.documentElement.classList.contains('dark') ? 'oxide-dark' : 'oxide',
+                content_css: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+              }}
+              initialValue="<p>វាយអក្សរខ្មែរនៅទីនេះ...</p>"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Header Section */}
+      <div className="mb-8 sm:mb-10 flex flex-col gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="text-center sm:text-left">
+            <h2 className="text-2xl sm:text-4xl font-bold mb-1 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Khmer Unicode Archive
+            </h2>
+            <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400">
+              Free high-quality fonts for your creative projects.
+            </p>
+          </div>
+          <button
+            onClick={handleDownloadAll}
+            className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-blue-500/20 text-sm active:scale-95"
+          >
+            <Archive size={18} />
+            Download All 27 Fonts
+          </button>
         </div>
 
+        {/* Launch Button */}
         <button
-          onClick={handleDownloadAll}
-          className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-blue-500/20 text-sm sm:text-base active:scale-95"
-          style={{ fontFamily: "'Lato', sans-serif" }}
+          onClick={() => setShowEditor(true)}
+          className="w-full flex items-center justify-center gap-3 py-4 px-6 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 hover:border-blue-400 hover:text-blue-600 transition-all group"
         >
-          <Archive size={18} />
-          Download All 27 Fonts
+          <PenLine size={18} className="group-hover:scale-110 transition-transform" />
+          <span className="font-bold text-sm sm:text-base">Try Khmer Rich Text Editor</span>
+          <span className="text-xs px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 font-bold">
+            27 Fonts
+          </span>
         </button>
       </div>
 
+      {/* Fonts Grid */}
       <div className="grid grid-cols-1 gap-4 sm:gap-6">
         {filteredFonts.map((font) => (
           <FontCard
