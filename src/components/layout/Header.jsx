@@ -41,7 +41,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
           <input
             type="text"
             placeholder="ស្វែងរកពុម្ពអក្សរ..."
-            className="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-full focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white"
+            className="font-['Suwannaphum'] placeholder:font-['Suwannaphum'] w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-full focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white"
             style={{ fontFamily: "'Lato', sans-serif" }}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -73,7 +73,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
           <input
             type="text"
             placeholder="ស្វែងរកពុម្ពអក្សរ..."
-            className="w-full pl-9 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm dark:text-white"
+            className="font-['Suwannaphum'] placeholder:font-['Suwannaphum']w-full pl-9 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm dark:text-white"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
