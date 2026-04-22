@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Download, CheckCircle, Archive, Minimize2, PenLine } from 'lucide-react';
-import { Editor } from '@tinymce/tinymce-react';
+import RichTextEditor from '../common/RichTextEditor'; // Updated to use your custom component
 
 const FONT_DATA = [
   { id: 'angkor', name: 'Angkor', designer: 'Danh Hong', fileName: 'Angkor.zip', category: 'Display', googleFont: 'Angkor', description: 'Inspired by Khmer inscriptions, perfect for historical contexts.', previewText: 'ចេះមកពី រៀន មានមកពី រក' },
@@ -33,23 +33,14 @@ const FONT_DATA = [
 ];
 
 const FontCard = ({ font, downloadingId, onDownload }) => {
-  const [isEditing, setIsEditing] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [previewText, setPreviewText] = useState(font.previewText);
 
-  const handleTextClick = () => {
-    setIsEditing(true);
-    setIsExpanded(true);
-  };
-
-  const handleMinimize = () => {
-    setIsExpanded(false);
-    setIsEditing(false);
-  };
+  const handleTextClick = () => setIsExpanded(true);
+  const handleMinimize = () => setIsExpanded(false);
 
   return (
     <>
-      {/* Fullscreen Preview Overlay */}
       {isExpanded && (
         <div className="fixed inset-0 z-50 bg-white dark:bg-slate-950 flex flex-col">
           <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800">
@@ -57,9 +48,7 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
               <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded">
                 {font.category}
               </span>
-              <h3 className="text-lg font-bold" style={{ fontFamily: "'Lato', sans-serif" }}>
-                {font.name}
-              </h3>
+              <h3 className="text-lg font-bold">{font.name}</h3>
             </div>
             <button
               onClick={handleMinimize}
@@ -69,7 +58,6 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
               Minimize
             </button>
           </div>
-
           <div className="flex-1 flex flex-col p-6 sm:p-12 overflow-auto">
             <textarea
               autoFocus
@@ -88,7 +76,6 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
         </div>
       )}
 
-      {/* Normal Card UI */}
       <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-xl">
         <div className="flex flex-col lg:flex-row">
           <div className="lg:w-80 p-5 sm:p-6 bg-slate-50/50 dark:bg-slate-800/30 border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-slate-800 flex flex-col justify-between">
@@ -98,14 +85,11 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
                   {font.category}
                 </span>
               </div>
-              <h3 className="text-xl font-bold mb-1" style={{ fontFamily: "'Lato', sans-serif" }}>
-                {font.name}
-              </h3>
+              <h3 className="text-xl font-bold mb-1">{font.name}</h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
                 {font.description}
               </p>
             </div>
-
             <button
               onClick={() => onDownload(font)}
               disabled={downloadingId === font.id}
@@ -119,7 +103,6 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
               {downloadingId === font.id ? 'Starting...' : 'Download'}
             </button>
           </div>
-
           <div className="flex-1 p-5 sm:p-8 flex flex-col justify-center min-h-[140px]">
             <div
               onClick={handleTextClick}
@@ -146,8 +129,12 @@ const Body = ({ searchTerm }) => {
   const [downloadingId, setDownloadingId] = useState(null);
   const [showEditor, setShowEditor] = useState(false);
 
-  // TinyMCE Font Formatting: Name='Google Font Name', sans-serif;
-  const khmerFontFormats = FONT_DATA.map(f => `${f.name}='${f.googleFont}', sans-serif`).join(';');
+  // Prepare font formats for the custom RichTextEditor
+  const khmerFonts = FONT_DATA.map(f => ({
+    label: f.name,
+    value: `'${f.googleFont}', sans-serif`
+  }));
+
   const googleFontsUrl = FONT_DATA.map(f => f.googleFont.replace(/ /g, '+')).join('|');
 
   const filteredFonts = FONT_DATA.filter(f =>
@@ -176,42 +163,29 @@ const Body = ({ searchTerm }) => {
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-12">
-      {/* TinyMCE Modal Overlay */}
+      {/* Global Style to load Google Fonts for the Editor */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=${googleFontsUrl}&display=swap');
+      `}</style>
+
+      {/* Custom Editor Modal Overlay */}
       {showEditor && (
-        <div className="fixed inset-0 z-[60] bg-white dark:bg-slate-950 flex flex-col">
-          <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-slate-200 dark:border-slate-800">
+        <div className="fixed inset-0 z-[60] bg-white dark:bg-slate-950 flex flex-col p-4 sm:p-8">
+          <div className="flex items-center justify-between mb-4 px-2">
             <div className="flex items-center gap-2">
-              <PenLine size={16} className="text-blue-600" />
-              <span className="font-bold text-sm" style={{ fontFamily: "'Lato', sans-serif" }}>
-                Khmer Rich Text Editor
-              </span>
+              <PenLine size={18} className="text-blue-600" />
+              <span className="font-bold text-sm">Khmer Rich Text Editor</span>
             </div>
             <button
               onClick={() => setShowEditor(false)}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-blue-50 hover:text-blue-600 transition-all text-xs font-bold active:scale-95"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-blue-50 hover:text-blue-600 transition-all text-xs font-bold"
             >
               <Minimize2 size={14} />
               Close Editor
             </button>
           </div>
-          <div className="flex-1 overflow-hidden">
-            <Editor
-              apiKey="8hbojyhxg3e1thxrfp3xzks2rdz1autw90biep7q3l8laf1q"
-              init={{
-                height: '100%',
-                menubar: true,
-                plugins: ['advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen', 'insertdatetime', 'media', 'table', 'wordcount'],
-                toolbar: 'undo redo | fontfamily fontsize | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor | removeformat',
-                font_family_formats: khmerFontFormats,
-                content_style: `
-                  @import url('https://fonts.googleapis.com/css2?family=${googleFontsUrl}&display=swap');
-                  body { font-family: 'Battambang', sans-serif; font-size: 18px; line-height: 2; padding: 2rem; }
-                `,
-                skin: document.documentElement.classList.contains('dark') ? 'oxide-dark' : 'oxide',
-                content_css: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
-              }}
-              initialValue="<p>វាយអក្សរខ្មែរនៅទីនេះ...</p>"
-            />
+          <div className="flex-1 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xl">
+            <RichTextEditor customFonts={khmerFonts} />
           </div>
         </div>
       )}
@@ -220,7 +194,7 @@ const Body = ({ searchTerm }) => {
       <div className="mb-8 sm:mb-10 flex flex-col gap-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="text-center sm:text-left">
-            <h2 className="text-2xl sm:text-4xl font-bold mb-1 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-2xl sm:text-4xl font-bold mb-1 tracking-tight">
               Khmer Unicode Archive
             </h2>
             <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400">
@@ -236,7 +210,6 @@ const Body = ({ searchTerm }) => {
           </button>
         </div>
 
-        {/* Launch Button */}
         <button
           onClick={() => setShowEditor(true)}
           className="w-full flex items-center justify-center gap-3 py-4 px-6 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 hover:border-blue-400 hover:text-blue-600 transition-all group"
