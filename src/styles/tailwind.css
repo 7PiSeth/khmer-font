@@ -13,8 +13,36 @@
       /* overflow: hidden; */
     }
 
+    :root {
+      --lg-bg: radial-gradient(1200px 600px at 12% -10%, rgba(84, 170, 255, 0.2), transparent 60%),
+        radial-gradient(1200px 650px at 85% 0%, rgba(154, 118, 255, 0.16), transparent 58%),
+        linear-gradient(180deg, #f8fbff 0%, #eef3fb 100%);
+      --lg-surface: rgba(255, 255, 255, 0.52);
+      --lg-surface-strong: rgba(255, 255, 255, 0.72);
+      --lg-border: rgba(255, 255, 255, 0.62);
+      --lg-text: #0f172a;
+      --lg-muted: #475569;
+      --lg-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+      --lg-shadow-strong: 0 18px 42px rgba(15, 23, 42, 0.16);
+    }
+
+    .dark {
+      --lg-bg: radial-gradient(1100px 580px at 10% -8%, rgba(77, 132, 255, 0.18), transparent 58%),
+        radial-gradient(1000px 620px at 90% 2%, rgba(153, 107, 255, 0.17), transparent 55%),
+        linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+      --lg-surface: rgba(15, 23, 42, 0.52);
+      --lg-surface-strong: rgba(15, 23, 42, 0.72);
+      --lg-border: rgba(148, 163, 184, 0.24);
+      --lg-text: #e2e8f0;
+      --lg-muted: #94a3b8;
+      --lg-shadow: 0 14px 30px rgba(2, 6, 23, 0.45);
+      --lg-shadow-strong: 0 20px 48px rgba(2, 6, 23, 0.56);
+    }
+
     body {
-      @apply light-mode dark:dark-mode select-none;
+      background: var(--lg-bg);
+      color: var(--lg-text);
+      @apply light-mode dark:dark-mode select-none transition-colors duration-300;
     }
   }
   
@@ -42,6 +70,40 @@
     .selection {
       @apply text-xl font-medium sm:mx-5 text-center mx-1
       dark:bg-[#1E2329] bg-[#F4F6F8];
+    }
+
+    /* Reusable Apple Liquid Glass style primitives */
+    .liquid-glass {
+      background: var(--lg-surface);
+      border: 1px solid var(--lg-border);
+      box-shadow: var(--lg-shadow);
+      backdrop-filter: saturate(170%) blur(18px);
+      -webkit-backdrop-filter: saturate(170%) blur(18px);
+    }
+
+    .liquid-glass-strong {
+      background: var(--lg-surface-strong);
+      border: 1px solid var(--lg-border);
+      box-shadow: var(--lg-shadow-strong);
+      backdrop-filter: saturate(180%) blur(22px);
+      -webkit-backdrop-filter: saturate(180%) blur(22px);
+    }
+
+    .liquid-panel {
+      @apply liquid-glass rounded-2xl sm:rounded-3xl;
+    }
+
+    .liquid-chip {
+      @apply liquid-glass rounded-full;
+    }
+
+    .liquid-input {
+      @apply liquid-glass rounded-full border-none outline-none;
+      color: var(--lg-text);
+    }
+
+    .liquid-muted {
+      color: var(--lg-muted);
     }
   }
 

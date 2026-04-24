@@ -20,7 +20,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
   const toggleDarkMode = () => setDarkMode(prev => !prev);
 
   return (
-    <header className="sticky top-0 z-30 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-300">
+    <header className="sticky top-0 z-30 w-full liquid-glass border-b transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-4">
 
         {/* Logo Section */}
@@ -41,7 +41,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
           <input
             type="text"
             placeholder="ស្វែងរកពុម្ពអក្សរ..."
-            className="font-['Suwannaphum'] placeholder:font-['Suwannaphum'] w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-full focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white"
+            className="font-['Suwannaphum'] placeholder:font-['Suwannaphum'] w-full pl-10 pr-4 py-2 liquid-input focus:ring-2 focus:ring-blue-500 transition-all"
             style={{ fontFamily: "'Lato', sans-serif" }}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -52,13 +52,13 @@ const Header = ({ searchTerm, setSearchTerm }) => {
         <div className="flex items-center gap-2 sm:gap-4">
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-yellow-400 hover:ring-2 hover:ring-blue-500 transition-all active:scale-90"
+            className="p-2 rounded-xl liquid-glass text-slate-600 dark:text-yellow-400 hover:ring-2 hover:ring-blue-500 transition-all active:scale-90"
             aria-label="Toggle Theme"
           >
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
 
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest">
+          <div className="hidden lg:flex items-center gap-2 px-3 py-1 liquid-chip text-xs font-bold uppercase tracking-widest liquid-muted">
             <Monitor size={14} />
             <Tablet size={14} />
             <Smartphone size={14} />
@@ -73,7 +73,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
           <input
             type="text"
             placeholder="ស្វែងរកពុម្ពអក្សរ..."
-            className="font-['Suwannaphum'] placeholder:font-['Suwannaphum']w-full pl-9 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm dark:text-white"
+            className="font-['Suwannaphum'] placeholder:font-['Suwannaphum'] w-full pl-9 pr-4 py-2 liquid-glass rounded-xl border-none focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />

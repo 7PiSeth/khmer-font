@@ -42,8 +42,8 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
   return (
     <>
       {isExpanded && (
-        <div className="fixed inset-0 z-50 bg-white dark:bg-slate-950 flex flex-col">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+        <div className="fixed inset-0 z-50 liquid-glass-strong flex flex-col">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-white/30 dark:border-slate-700/40">
             <div className="flex items-center gap-3">
               <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded">
                 {font.category}
@@ -52,7 +52,7 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
             </div>
             <button
               onClick={handleMinimize}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-blue-50 hover:text-blue-600 transition-all text-xs font-bold active:scale-95"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-xl liquid-glass text-slate-600 dark:text-slate-300 hover:text-blue-600 transition-all text-xs font-bold active:scale-95"
             >
               <Minimize2 size={14} />
               Minimize
@@ -76,9 +76,9 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
         </div>
       )}
 
-      <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-xl">
+      <div className="liquid-panel overflow-hidden hover:border-blue-500 transition-all duration-300 hover:shadow-xl">
         <div className="flex flex-col lg:flex-row">
-          <div className="lg:w-80 p-5 sm:p-6 bg-slate-50/50 dark:bg-slate-800/30 border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-slate-800 flex flex-col justify-between">
+          <div className="lg:w-80 p-5 sm:p-6 bg-white/20 dark:bg-slate-900/20 border-b lg:border-b-0 lg:border-r border-white/20 dark:border-slate-700/30 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded">
@@ -96,7 +96,7 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
               className={`w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl font-bold transition-all ${
                 downloadingId === font.id
                   ? 'bg-emerald-500 text-white'
-                  : 'bg-slate-900 dark:bg-slate-800 text-white hover:bg-blue-600 active:scale-[0.97]'
+                  : 'liquid-glass-strong text-white hover:bg-blue-600 active:scale-[0.97]'
               }`}
             >
               {downloadingId === font.id ? <CheckCircle size={18} /> : <Download size={18} />}
@@ -170,7 +170,7 @@ const Body = ({ searchTerm }) => {
 
       {/* Custom Editor Modal Overlay */}
       {showEditor && (
-        <div className="fixed inset-0 z-[60] bg-white dark:bg-slate-950 flex flex-col p-4 sm:p-8">
+        <div className="fixed inset-0 z-[60] liquid-glass-strong flex flex-col p-4 sm:p-8">
           <div className="flex items-center justify-between mb-4 px-2">
             <div className="flex items-center gap-2">
               <PenLine size={18} className="text-blue-600" />
@@ -178,13 +178,13 @@ const Body = ({ searchTerm }) => {
             </div>
             <button
               onClick={() => setShowEditor(false)}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-blue-50 hover:text-blue-600 transition-all text-xs font-bold"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-xl liquid-glass text-slate-600 dark:text-slate-300 hover:text-blue-600 transition-all text-xs font-bold"
             >
               <Minimize2 size={14} />
               Close Editor
             </button>
           </div>
-          <div className="flex-1 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xl">
+          <div className="flex-1 overflow-hidden rounded-xl border border-white/30 dark:border-slate-700/40 shadow-2xl">
             <RichTextEditor customFonts={khmerFonts} />
           </div>
         </div>
@@ -212,7 +212,7 @@ const Body = ({ searchTerm }) => {
 
         <button
           onClick={() => setShowEditor(true)}
-          className="w-full flex items-center justify-center gap-3 py-4 px-6 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 hover:border-blue-400 hover:text-blue-600 transition-all group"
+          className="w-full flex items-center justify-center gap-3 py-4 px-6 rounded-2xl border-2 border-dashed border-white/40 dark:border-slate-700/60 liquid-glass text-slate-500 dark:text-slate-400 hover:border-blue-400 hover:text-blue-600 transition-all group"
         >
           <PenLine size={18} className="group-hover:scale-110 transition-transform" />
           <span className="font-bold text-sm sm:text-base">Try Khmer Rich Text Editor</span>
@@ -235,7 +235,7 @@ const Body = ({ searchTerm }) => {
       </div>
 
       {filteredFonts.length === 0 && (
-        <div className="text-center py-20 bg-white dark:bg-slate-900 rounded-3xl border border-dashed border-slate-200 dark:border-slate-800">
+        <div className="text-center py-20 liquid-panel border-dashed">
           <p className="text-slate-400">គ្មានលទ្ធផលស្វែងរក</p>
         </div>
       )}

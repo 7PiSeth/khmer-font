@@ -19,8 +19,8 @@ const socialLinks = [
 const Footer = () => {
   return (
     <div
-      className={`w-full bottom-0 left-0 h-[100px] md:h-[50px] bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 shadow-sm dark:text-[#A3B3BC] 
-      text-slate-00 flex flex-col md:flex-row justify-evenly items-center`}
+      className={`w-full bottom-0 left-0 h-[100px] md:h-[50px] liquid-glass border-t dark:text-[#A3B3BC] 
+      text-slate-700 flex flex-col md:flex-row justify-evenly items-center`}
     >
       <div className="flex">
         {socialLinks.map((link, index) => (
