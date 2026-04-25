@@ -52,3 +52,283 @@
     height: -webkit-fill-available; /* Safari-specific fill available height */
   }
 }
+
+@font-face {
+  font-family: 'akbalthom_highschool_fun';
+  src: url('/fonts/AKbalthom HighSchool-Fun.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'akbalthom_kbach';
+  src: url('/fonts/AKbalthom Kbach.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'akbalthom_khmerbasic';
+  src: url('/fonts/AKbalthom KhmerBasic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'akbalthom_khmergothic';
+  src: url('/fonts/AKbalthom KhmerGothic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'akbalthom_khmerhand';
+  src: url('/fonts/AKbalthom KhmerHand.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'akbalthom_khmerler';
+  src: url('/fonts/AKbalthom KhmerLer.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'akbalthom_khmerlight';
+  src: url('/fonts/AKbalthom KhmerLight.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'akbalthom_khmernew';
+  src: url('/fonts/AKbalthom KhmerNew.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'akbalthom_korea';
+  src: url('/fonts/AKBALTHOM Korea.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'akbalthom_naga_bold';
+  src: url('/fonts/AKbalthom Naga Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_air';
+  src: url('/fonts/ASvadek Air.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_blade';
+  src: url('/fonts/ASvadek Blade.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_bokornew';
+  src: url('/fonts/ASvadek Bokornew.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_box';
+  src: url('/fonts/ASvadek Box.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_brushline';
+  src: url('/fonts/ASvadek Brushline.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_edge';
+  src: url('/fonts/ASvadek Edge.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_edgehollow';
+  src: url('/fonts/ASvadek EdgeHollow.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_fasthand_bold_italic';
+  src: url('/fonts/ASvadek FastHand Bold-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_fasthand_bold';
+  src: url('/fonts/ASvadek FastHand Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_fasthand_italic';
+  src: url('/fonts/ASvadek FastHand Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_fasthand';
+  src: url('/fonts/ASvadek FastHand.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_freehand';
+  src: url('/fonts/ASvadek FreeHand.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_freehandb';
+  src: url('/fonts/ASvadek FreeHandb.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_frightened';
+  src: url('/fonts/ASvadek Frightened.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_hindi';
+  src: url('/fonts/ASvadek Hindi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_hollow';
+  src: url('/fonts/ASvadek Hollow.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_home_italic';
+  src: url('/fonts/ASvadek Home_italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_home';
+  src: url('/fonts/ASvadek Home.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_hongkbach';
+  src: url('/fonts/ASvadek Hongkbach.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_kampuchealove';
+  src: url('/fonts/ASvadek KampucheaLove.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_kbach_s';
+  src: url('/fonts/ASvadek Kbach S.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_kbachvora';
+  src: url('/fonts/ASvadek KbachVora.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_lazy';
+  src: url('../../public/fonts/ASvadek Lazy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_momo_w_italic';
+  src: url('/fonts/ASvadek Momo W-italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_pixel';
+  src: url('/fonts/ASvadek Pixel.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_ribbon';
+  src: url('/fonts/ASvadek Ribbon.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_samurai';
+  src: url('/fonts/ASvadek Samurai.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_wave_italic';
+  src: url('/fonts/ASvadek Wave Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_wave';
+  src: url('/fonts/ASvadek Wave.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'asvadek_writehand';
+  src: url('/fonts/ASvadek Writehand.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

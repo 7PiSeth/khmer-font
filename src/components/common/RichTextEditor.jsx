@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 
 const FONTS = [
-  { label: "Nokora", value: "'Nokora'" }, // Moved to top for easy access
+  { label: "Nokora", value: "'Nokora'" }, 
   { label: "Angkor", value: "'Angkor'" },
   { label: "Battambang", value: "'Battambang'" },
   { label: "Bayon", value: "'Bayon'" },
@@ -27,7 +27,48 @@ const FONTS = [
   { label: "Preahvihear", value: "'Preahvihear'" },
   { label: "Siemreap", value: "'Siemreap'" },
   { label: "Suwannaphum", value: "'Suwannaphum'" },
-  { label: "Taprom", value: "'Taprom'" }
+  { label: "Taprom", value: "'Taprom'" },
+  { label: "AKbalthom HighSchool-Fun", value: "'akbalthom_highschool_fun'" },
+  { label: "AKbalthom Kbach", value: "'akbalthom_kbach'" },
+  { label: "AKbalthom KhmerBasic", value: "'akbalthom_khmerbasic'" },
+  { label: "AKbalthom KhmerGothic", value: "'akbalthom_khmergothic'" },
+  { label: "AKbalthom KhmerHand", value: "'akbalthom_khmerhand'" },
+  { label: "AKbalthom KhmerLer", value: "'akbalthom_khmerler'" },
+  { label: "AKbalthom KhmerLight", value: "'akbalthom_khmerlight'" },
+  { label: "AKbalthom KhmerNew", value: "'akbalthom_khmernew'" },
+  { label: "AKBALTHOM Korea", value: "'akbalthom_korea'" },
+  { label: "AKbalthom Naga Bold", value: "'akbalthom_naga_bold'" },
+
+  { label: "ASvadek Air", value: "'asvadek_air'" },
+  { label: "ASvadek Blade", value: "'asvadek_blade'" },
+  { label: "ASvadek Bokornew", value: "'asvadek_bokornew'" },
+  { label: "ASvadek Box", value: "'asvadek_box'" },
+  { label: "ASvadek Brushline", value: "'asvadek_brushline'" },
+  { label: "ASvadek Edge", value: "'asvadek_edge'" },
+  { label: "ASvadek EdgeHollow", value: "'asvadek_edgehollow'" },
+  { label: "ASvadek FastHand Bold-Italic", value: "'asvadek_fasthand_bold_italic'" },
+  { label: "ASvadek FastHand Bold", value: "'asvadek_fasthand_bold'" },
+  { label: "ASvadek FastHand Italic", value: "'asvadek_fasthand_italic'" },
+  { label: "ASvadek FastHand", value: "'asvadek_fasthand'" },
+  { label: "ASvadek FreeHand", value: "'asvadek_freehand'" },
+  { label: "ASvadek FreeHandb", value: "'asvadek_freehandb'" },
+  { label: "ASvadek Frightened", value: "'asvadek_frightened'" },
+  { label: "ASvadek Hindi", value: "'asvadek_hindi'" },
+  { label: "ASvadek Hollow", value: "'asvadek_hollow'" },
+  { label: "ASvadek Home_italic", value: "'asvadek_home_italic'" },
+  { label: "ASvadek Home", value: "'asvadek_home'" },
+  { label: "ASvadek Hongkbach", value: "'asvadek_hongkbach'" },
+  { label: "ASvadek KampucheaLove", value: "'asvadek_kampuchealove'" },
+  { label: "ASvadek Kbach S", value: "'asvadek_kbach_s'" },
+  { label: "ASvadek KbachVora", value: "'asvadek_kbachvora'" },
+  { label: "ASvadek Lazy", value: "'asvadek_lazy'" },
+  { label: "ASvadek Momo W-italic", value: "'asvadek_momo_w_italic'" },
+  { label: "ASvadek Pixel", value: "'asvadek_pixel'" },
+  { label: "ASvadek Ribbon", value: "'asvadek_ribbon'" },
+  { label: "ASvadek Samurai", value: "'asvadek_samurai'" },
+  { label: "ASvadek Wave Italic", value: "'asvadek_wave_italic'" },
+  { label: "ASvadek Wave", value: "'asvadek_wave'" },
+  { label: "ASvadek Writehand", value: "'asvadek_writehand'" }
 ];
 
 const FONT_SIZES = [8, 9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 36, 48, 60, 72];
