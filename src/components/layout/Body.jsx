@@ -127,7 +127,7 @@ const FontCard = ({ font, downloadingId, onDownload }) => {
               </div>
               <h3 className="text-xl font-bold mb-1">{font.name}</h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                <h3 className='mb-2'>Designed by <span className="font-extrabold text-slate-200">{font.designer} 🎨🖌️</span></h3>
+                <h3 className='mb-2'>Designed by <span className="font-extrabold dark:text-slate-200">{font.designer} 🎨🖌️</span></h3>
                 {font.description}
               </p>
             </div>
