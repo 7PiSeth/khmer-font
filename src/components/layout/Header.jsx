@@ -10,10 +10,10 @@ const Header = ({ searchTerm, setSearchTerm }) => {
 
     if (darkMode) {
       root.classList.add("dark");
-      if (themeColorMeta) themeColorMeta.content = "rgb(16, 24, 43)";
+      if (themeColorMeta) themeColorMeta.content = "#0F1527";
     } else {
       root.classList.remove("dark");
-      if (themeColorMeta) themeColorMeta.content = "rgb(194, 205, 219)";
+      if (themeColorMeta) themeColorMeta.content = "#FFFFFF";
     }
   }, [darkMode]);
 
